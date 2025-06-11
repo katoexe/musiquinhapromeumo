@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Te amo, Ramon</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Poiret+One&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">   
+   
+  <style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto Mono', monospace;
+  background: linear-gradient(135deg, #a71a78, #f1cbcb);
+  animation: bgAnim 10s ease infinite alternate;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-align: center;
+  padding: 40px;
+}
+
+@keyframes bgAnim {
+  0% { background-position: left; }
+  100% { background-position: right; }
+}
+
+.container {
+  background: #ffffff;
+  border-radius: 70px;
+  padding: 40px;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  position: relative;
+  width: 50%;
+  max-width: 750px;
+}
+
+h1 {
+  font-family: 'Roboto Mono', monospace;
+  color: #fa4178;
+  margin-bottom: 20px;
+  font-size: 2.2em;
+}
+
+#mensagem {
+  font-size: 1.4em;
+  color: #c25691;
+  min-height: 60px;
+  margin-top: 20px;
+  transition: all 0.3s ease;
+}
+
+button {
+  background-color: #d8609c;
+  border: none;
+  color: white;
+  padding: 15px 30px;
+  border-radius: 30px;
+  font-size: 1.1em;
+  cursor: pointer;
+  box-shadow: 0 6px #a31762;
+  transition: all 0.2s ease-in-out;
+}
+
+button:hover {
+  background-color: #ff769f;
+  transform: scale(1.10);
+}
+
+/* ❤️ Coração ao clicar */
+.heart {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: #b31147;
+  transform: rotate(45deg);
+  opacity: 0.50;
+  animation: float 2s ease-out forwards;
+}
+
+.heart::before,
+.heart::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: #b31147;
+  border-radius: 50%;
+}
+
+.heart::before {
+  top: -10px;
+  left: 0;
+}
+
+.heart::after {
+  left: -10px;
+  top: 0;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px) rotate(45deg) scale(1);
+    opacity: 1;
+  }
+  10% {
+    transform: translateY(-50px) rotate(45deg) scale(1.2);
+  }
+  100%{
+    transform: translateY(-100px) rotate(45deg) scale(1);
+
+  }
+  
+}
+</style>
+
+</head>
+<body>
+  <div class="container">
+    <h1>Feliz dia dos namorados, meu neném 💖</h1>
+    <button onclick="mostrarMensagem()">Clica aqui, amor 💌</button>
+    <div id="mensagem"></div>
+  </div>
+
+  <script>
+    const mensagens = [
+      "Você é o meu amor, minha calma e meu caos ao mesmo tempo 💞",
+      "Eu conto os dias pra te abraçar de novo 🥺",
+      "A distância é só um detalhe... meu coração já é seu ❤️",
+      "Sorte a minha ter você, mesmo longe 🌍",
+      "Cada clique é um beijo que eu queria te dar 😘",
+      "Te amo mais do que consigo explicar 💖",
+      "Você me faz sentir amada de um jeito único ✨",
+      "Quando te vejo, meu mundo gira no eixo certo 🥰",
+      "Fica comigo? Tipo pra sempre? 💍",
+      "Ramon, você é o motivo do meu sorriso bobo 💗",
+      "Meu amor por você só cresce, mesmo com a saudade 💌",
+      "Tudo em mim grita teu nome quando penso em amor ❤️‍🔥",
+      "Queria te apertar bem forte agora 🫂",
+      "Promete que vai me esperar do jeitinho que eu espero você? 💕",
+      "A gente se completa, mesmo com quilômetros entre nós 💫"
+    ];
+
+    let index = 0;
+
+    function mostrarMensagem() {
+      const msg = document.getElementById("mensagem");
+      msg.textContent = mensagens[index % mensagens.length];
+      index++;
+      criarCoracao();
+    }
+
+    function criarCoracao() {
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = (Math.random() * 3 + 3) + "s";
+      document.body.appendChild(heart);
+      setTimeout(() => {
+        heart.remove();
+      }, 5000);
+    }
+  </script>
+  <script>
+  document.addEventListener('click', (e) => {
+    const heart = document.createElement('div');
+    heart.className = 'heart';
+    heart.style.left = `${e.clientX - 10}px`;
+    heart.style.top = `${e.clientY - 10}px`;
+    document.body.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 2000);
+  });
+</script>
+
+</body>
+</html>
